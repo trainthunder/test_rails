@@ -1,40 +1,32 @@
-<div class="w-full max-w-6xl flex flex-col gap-6">
+<div class="w-full max-w-6xl flex flex-col gap-6" data-testid="academy-quest-page">
   <%# info part start %>
-  <div class="flex flex-col items-center md:flex-row md:items-start md:justify-between gap-6 md:gap-0 p-5 md:p-6 lg:p-14 bg-linear-to-r from-cyan-100 via-blue-300 to-indigo-400 rounded-2xl">
+  <div class="flex flex-col items-center md:flex-row md:items-start md:justify-between gap-6 md:gap-0 p-5 md:p-6 lg:p-14 bg-linear-to-r from-cyan-100 via-blue-300 to-indigo-400 rounded-2xl" data-testid="info-section">
     <div class="flex flex-col gap-6">
       <div class="flex flex-col gap-4">
-        <span class="font-extrabold text-3xl sm:text-6xl md:text-5xl lg:text-6xl">My Academy Quest</span>
-        <span class="font-light text-2xl sm:text-4xl">Kitikun Polgarn</span>
+        <span class="font-extrabold text-3xl sm:text-6xl md:text-5xl lg:text-6xl" data-testid="page-title">My Academy Quest</span>
+        <span class="font-light text-2xl sm:text-4xl" data-testid="user-name">Kitikun Polgarn</span>
       </div>
-      <div class="hidden md:flex bg-linear-to-r from-yellow-400 via-orange-500 to-yellow-600 p-3 rounded-lg items-center justify-center max-w-50">
+      <div class="hidden md:flex bg-linear-to-r from-yellow-400 via-orange-500 to-yellow-600 p-3 rounded-lg items-center justify-center max-w-50" data-testid="my-brag-doc-desktop-button">
         <span class="text-gray-800 font-bold">My Brag Document</span>
       </div>
     </div>
-    <%= image_tag "train-photo.JPG", class:"w-full max-w-sm sm:max-w-md md:max-w-sm rounded-2xl"%>
-    <div class="md:hidden bg-linear-to-r from-yellow-400 via-orange-500 to-yellow-600 p-3 rounded-lg flex items-center justify-center">
+    <%= image_tag "train-photo.JPG", class:"w-full max-w-sm sm:max-w-md md:max-w-sm rounded-2xl", data: { testid: "user-image" } %>
+    <div class="md:hidden bg-linear-to-r from-yellow-400 via-orange-500 to-yellow-600 p-3 rounded-lg flex items-center justify-center" data-testid="my-brag-doc-mobile-button">
       <span class="text-gray-800 font-bold">My Brag Document</span>
     </div>
   </div>
   <%# info part end %>
   <%# quest part start %>
-  <div class="flex flex-col gap-8 items-center p-5 md:p-6 lg:p-14 bg-linear-to-r from-cyan-400 via-blue-400 to-indigo-400 rounded-2xl">
+  <div class="flex flex-col gap-8 items-center p-5 md:p-6 lg:p-14 bg-linear-to-r from-cyan-400 via-blue-400 to-indigo-400 rounded-2xl" data-testid="quest-section">
     <div class="w-full flex items-center justify-between">
-      <span class="text-gray-800 font-bold text-xl md:text-2xl">My Quest List</span>
-      <%= link_to new_quest_path do %>
+      <span class="text-gray-800 font-bold text-xl md:text-2xl" data-testid="quest-list-title">My Quest List</span>
+      <%= link_to new_quest_path, data: { testid: "new-quest-button" } do %>
         <div class="bg-linear-to-r from-orange-600 via-amber-900 to-amber-950 p-2 rounded-lg flex items-center justify-center">
           <span class="text-white font-bold">New Quest</span>
         </div>
       <% end %>
     </div>
-    <%# <div class="p-3 bg-white w-full rounded-lg flex justify-between shadow-xl">
-      <div class="flex items-center gap-3 overflow-hidden max-w-[calc(100%-3rem)]">
-        <input type="checkbox" class="size-6 shrink-0">
-        <span class="text-base font-semibold truncate">Git 101132132132132131231231231231231231231231231231312</span>
-      </div>
-      <div class="size-6 bg-red-500 shrink-0">
-      </div>
-    </div> %>
-    <div id="quests" class="space-y-3">
+    <div id="quests" class="space-y-3" data-testid="quest-list">
       <%= turbo_stream_from "quests" %>
       <%= render @quests %>
     </div>

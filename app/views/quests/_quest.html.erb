@@ -1,15 +1,15 @@
-<turbo-frame id="<%= dom_id(quest) %>">
-  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 bg-yellow-100 rounded shadow-sm gap-2 sm:gap-0">
+<turbo-frame id="<%= dom_id(quest) %>" data-testid="quest-item-<%= quest.id %>">
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 bg-yellow-100 rounded shadow-sm gap-2 sm:gap-0" data-testid="quest-container">
     <div class="flex items-center gap-3">
-      <%= form_with model: quest, method: :patch, data: { turbo_stream: true }, class: "inline" do |f| %>
-        <%= f.check_box :status, checked: quest.status, onchange: "this.form.requestSubmit();" %>
+      <%= form_with model: quest, method: :patch, data: { turbo_stream: true, testid: "toggle-quest-status-form-#{quest.id}" }, class: "inline" do |f| %>
+        <%= f.check_box :status, checked: quest.status, onchange: "this.form.requestSubmit();", data: { testid: "toggle-status-checkbox-#{quest.id}" } %>
       <% end %>
-      <span class="text-base sm:text-lg <%= 'line-through' if quest.status %>">
+      <span class="text-base sm:text-lg <%= 'line-through' if quest.status %>" data-testid="quest-title-<%= quest.id %>">
         <%= quest.title %>
       </span>
     </div>
     <%= button_to "Delete", quest_path(quest), method: :delete,
-          data: { turbo_stream: true },
+          data: { turbo_stream: true, testid: "delete-quest-button-#{quest.id}" },
           class: "text-red-600 hover:underline text-sm sm:text-base" %>
   </div>
 </turbo-frame>
