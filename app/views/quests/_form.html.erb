@@ -1,0 +1,11 @@
+<%= form_with model: @quest do |form| %>
+  <div class="max-w-md mx-auto bg-white p-6 rounded shadow space-y-4">
+    <div>
+      <%= form.label :title, class: "block font-semibold text-sm md:text-base" %>
+      <%= form.text_field :title, class: "mt-1 w-full border rounded p-2" %>
+    </div>
+    <div class="flex justify-end">
+      <%= form.submit "Create Quest", class: "bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded" %>
+    </div>
+  </div>
+<% end %>

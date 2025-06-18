@@ -20,17 +20,23 @@
   <div class="flex flex-col gap-8 items-center p-5 md:p-6 lg:p-14 bg-linear-to-r from-cyan-400 via-blue-400 to-indigo-400 rounded-2xl">
     <div class="w-full flex items-center justify-between">
       <span class="text-gray-800 font-bold text-xl md:text-2xl">My Quest List</span>
-      <div class="bg-linear-to-r from-orange-600 via-amber-900 to-amber-950 p-2 rounded-lg flex items-center justify-center">
-        <span class="text-white font-bold">New Quest</span>
-      </div>
+      <%= link_to new_quest_path do %>
+        <div class="bg-linear-to-r from-orange-600 via-amber-900 to-amber-950 p-2 rounded-lg flex items-center justify-center">
+          <span class="text-white font-bold">New Quest</span>
+        </div>
+      <% end %>
     </div>
-    <div class="p-3 bg-white w-full rounded-lg flex justify-between shadow-xl">
+    <%# <div class="p-3 bg-white w-full rounded-lg flex justify-between shadow-xl">
       <div class="flex items-center gap-3 overflow-hidden max-w-[calc(100%-3rem)]">
         <input type="checkbox" class="size-6 shrink-0">
         <span class="text-base font-semibold truncate">Git 101132132132132131231231231231231231231231231231312</span>
       </div>
       <div class="size-6 bg-red-500 shrink-0">
       </div>
+    </div> %>
+    <div id="quests" class="space-y-3">
+      <%= turbo_stream_from "quests" %>
+      <%= render @quests %>
     </div>
   </div>
   <%# quest part end %>
