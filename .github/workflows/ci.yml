@@ -15,7 +15,7 @@ jobs:
       DATABASE_URL: postgresql://postgres.zkqrczoxjeagtrbudwla:ldukUtHDAVySfRWT@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres?sslmode=require
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
